@@ -10,7 +10,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 docker build -t data-chart .
 
 ### Run
-docker run -p 4200:4200 report
+docker run -p 4200:4200 data-chart
 
 ### Test
 Go to http://localhost:4200
