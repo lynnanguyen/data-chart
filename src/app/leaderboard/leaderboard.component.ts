@@ -39,6 +39,11 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
   }
 
   getLeaderboard(): void {
+    if (this.selectedLeaderboard === 'null') {
+      this.selectedLeaderboard = null;
+      return;
+    }
+
     this.getLeaderboardSubscription = this.reportService.getLeaderboard(this.selectedLeaderboard).subscribe((leaderboard: Report) => {
       this.leaderboardColumns = leaderboard.names;
       this.leaderboardDataTypes = leaderboard.dtypes;
@@ -51,6 +56,11 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
   }
 
   getReport(): void {
+    if (this.selectedReport === 'null') {
+      this.selectedReport = null;
+      return;
+    }
+
     this.getReportSubscription = this.reportService.getReport(this.selectedReport).subscribe((report: Report) => {
       this.reportColumns = report.names;
       this.reportDataTypes = report.dtypes;
