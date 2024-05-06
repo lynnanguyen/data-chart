@@ -11,9 +11,9 @@
     table-layout: auto;
   
     thead {
-      background-color: #4CAF50;
+      background-color: #111;
     }
-  
+
     th, td {
       padding: 15px;
       text-align: left;
@@ -22,11 +22,20 @@
     }
   
     tbody > tr {
+      &:first-child {
+        background-color: #4CAF50;
+        color: #222;
+        font-weight: bold;
+        font-size: 1em;
+        border-top: 3px solid #f0f0f0;
+        border-bottom: 3px solid #f0f0f0;
+      }
+
       &:last-child {
         background-color: #b22222;
         color: #222;
         font-weight: bold;
-        font-size: 1.2em;
+        font-size: 1em;
         border-top: 3px solid #f0f0f0;
       }
   
