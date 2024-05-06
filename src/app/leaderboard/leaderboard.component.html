@@ -1,0 +1,75 @@
+<div class="leaderboard-table">
+  <select [(ngModel)]="selectedLeaderboard" (change)="getLeaderboard()">
+    <option value="null" disabled selected>Select a Leaderboard</option>
+    <option *ngFor="let leaderboard of allLeaderboards" [value]="leaderboard">{{ leaderboard | unSnakeCase }}</option>
+  </select>
+  <div *ngIf="selectedLeaderboard">
+    <table [ngClass]="{'overflow': leaderboardColumns.length > 10 }">
+      <thead>
+        <tr>
+          <th></th>
+          <th *ngFor="let col of leaderboardColumns">{{ col | unSnakeCase }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of leaderboardValues; let j = index">
+          <td>
+            <div class="trophy">
+              <img *ngIf="j === 0" src="assets/images/1st-prize-icon.svg" alt="Gold Trophy">
+              <img *ngIf="j === 1" src="assets/images/2nd-prize-icon.svg" alt="Silver Trophy">
+              <img *ngIf="j === 2" src="assets/images/3rd-prize-icon.svg" alt="Bronze Trophy">
+            </div>
+          </td>
+          <td *ngFor="let item of row; let i = index">
+            <div *ngIf="leaderboardDataTypes[i] === 'date'">
+              {{ row[i] | date: 'short' }}
+            </div>
+            <div *ngIf="leaderboardDataTypes[i] === 'integer' || leaderboardDataTypes[i] === 'string'">
+              {{ row[i] }}
+            </div>
+            <div *ngIf="leaderboardDataTypes[i] === 'numeric'">
+              {{ row[i] | number: '1.1-3' }}
+            </div>
+          </td>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="reports-table">
+  <select [(ngModel)]="selectedReport" (change)="getReport()">
+    <option value="null" disabled selected>Select a Report</option>
+    <option *ngFor="let report of allReports" [value]="report">{{ report | unSnakeCase }}</option>
+  </select>
+  <div *ngIf="selectedReport">
+    <table [ngClass]="{'overflow': reportColumns.length > 10 }">
+      <thead>
+        <tr>
+          <th></th>
+          <th *ngFor="let col of reportColumns">{{ col | unSnakeCase }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of reportValues; let j = index">
+          <td>
+            <div class="trophy">
+              <img *ngIf="j === 0" src="assets/images/1st-prize-icon.svg" alt="Gold Trophy">
+              <img *ngIf="j === 1" src="assets/images/2nd-prize-icon.svg" alt="Silver Trophy">
+              <img *ngIf="j === 2" src="assets/images/3rd-prize-icon.svg" alt="Bronze Trophy">
+            </div>
+          </td>
+          <td *ngFor="let item of row; let i = index">
+            <div *ngIf="reportDataTypes[i] === 'date'">
+              {{ row[i] | date: 'short' }}
+            </div>
+            <div *ngIf="reportDataTypes[i] === 'integer' || reportDataTypes[i] === 'string'">
+              {{ row[i] }}
+            </div>
+            <div *ngIf="reportDataTypes[i] === 'numeric'">
+              {{ row[i] | number: '1.1-3' }}
+            </div>
+          </td>
+      </tbody>
+    </table>
+  </div>
+</div>
